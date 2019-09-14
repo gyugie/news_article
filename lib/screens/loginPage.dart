@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './tab_screens.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -168,6 +169,9 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: (){
                               if(_userEmail.text == 'mugypleci@gmail.com' && _userPassword.text == '123'){
                                 _checkingLogged();
+                                 Navigator.of(context).pushNamed(
+                                    TabsScreens.routeName
+                                 );
                               } else {
                                 _alertMessage('wrong');
                               }
