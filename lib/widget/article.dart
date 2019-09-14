@@ -4,7 +4,7 @@ class Article extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
+      elevation: 5,
       child: ListTile(
          onTap: (){},
          contentPadding: EdgeInsets.all(10),

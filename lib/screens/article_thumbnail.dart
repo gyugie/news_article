@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_article/widget/thumbnail.dart';
 
 class ThumbnailArticle extends StatelessWidget {
   @override
@@ -14,17 +15,7 @@ class ThumbnailArticle extends StatelessWidget {
               itemBuilder: (context, index){
                 return Container(
                   width: MediaQuery.of(context).size.width * 0.6,
-                  child: Card(
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Container(
-                      child: Center(
-                        child: Text('1'),
-                      ),
-                    ),
-                  ),
+                  child: Thumbnails()
                 );
               },  
               itemCount: 5,
