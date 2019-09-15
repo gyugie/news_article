@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_article/widget/article_detail.dart';
 import './screens/tab_screens.dart';
 import './screens/loginPage.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (ctx) => LoginPage(),
         TabsScreens.routeName : (ctx) => TabsScreens(),
+        ArticleDetail.routeName : (ctx) => ArticleDetail()
       },
     );
   }
