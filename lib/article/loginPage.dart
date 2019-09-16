@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: (){
                               if(_userEmail.text == 'mugypleci@gmail.com' && _userPassword.text == '123'){
                                 _checkingLogged();
-                                 Navigator.of(context).pushNamed(
+                                 Navigator.of(context).pushReplacementNamed(
                                     TabsScreens.routeName
                                  );
                               } else {

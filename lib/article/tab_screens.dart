@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './article_screens.dart';
-import './event_screens.dart';
+import '../event/event_screens.dart';
 
 class TabsScreens extends StatefulWidget {
   static const routeName = 'tabs-screens';
@@ -44,7 +44,7 @@ class _TabsScreensState extends State<TabsScreens> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectedPage,
         backgroundColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black45,
         selectedItemColor: Colors.white,
         currentIndex: _selectedMenu,
         items: [
