@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './drawer.dart';
 import '../article/article_screens.dart';
 import '../event/event_screens.dart';
 
@@ -39,6 +40,13 @@ class _TabsScreensState extends State<TabsScreens> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedMenu]['title']),
+      ),
+      drawer: Theme(
+      data: Theme.of(context).copyWith(
+       // Set the transparency here
+       canvasColor: Colors.transparent, //or any other color you want. e.g Colors.blue.withOpacity(0.5)
+      ),
+      child: MainDrawer(),
       ),
       body: _pages[_selectedMenu]['page'],
       bottomNavigationBar: BottomNavigationBar(
