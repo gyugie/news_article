@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_article/widget/article_detail.dart';
-import './screens/tab_screens.dart';
-import './screens/loginPage.dart';
+import './article/tab_screens.dart';
+import './article/loginPage.dart';
 
 void main() => runApp(MyApp());
 

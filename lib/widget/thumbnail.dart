@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import './article_detail.dart';
 
 class Thumbnails extends StatelessWidget {
   
+  void selectArticle(BuildContext ctx){
+    Navigator.of(ctx).pushNamed(ArticleDetail.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: () => selectArticle(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
