@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import './widget/tab_screens.dart';
 
@@ -37,20 +38,37 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  void _checkingLogged(){
+Future<void> _checkingLogged() async{
     setState(() {
       isLoading = true;
     });
+    try{
 
- 
-    
-  }
+      AuthResult user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _userEmail.text, password: _userPassword.text);
+      Navigator.of(context).pushReplacementNamed( TabsScreens.routeName );
+
+      setState(() {
+        isLoading = false;
+      });
+
+    }catch(e){
+      _alertMessage('wrong');
+      setState(() {
+        isLoading = false;
+      });
+    }
+}
 
   @override
   Widget build(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   final emailText = TextFormField(
                       controller: _userEmail,
+                      validator: (input){
+                        if(input.isEmpty){
+                          return 'Email Is Required!';
+                        }
+                      },
                       style: TextStyle(
                         color: Colors.white
                         ),
@@ -167,19 +185,14 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.white,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                             onPressed: (){
-                              if(_userEmail.text == 'mugypleci@gmail.com' && _userPassword.text == '123'){
-                                _checkingLogged();
-                                 Navigator.of(context).pushReplacementNamed(
-                                    TabsScreens.routeName
-                                 );
-                              } else {
-                                _alertMessage('wrong');
-                              }
-                              
+                             
+
                               if(_userEmail.text == ''){
                                 _alertMessage('email');
                               }else if(_userPassword.text == ''){
                                  _alertMessage('password');
+                              }else{
+                                 _checkingLogged();
                               }
 
                             },

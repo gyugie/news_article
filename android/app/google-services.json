@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "887724116629",
+    "firebase_url": "https://flutter-learning-5c40a.firebaseio.com",
+    "project_id": "flutter-learning-5c40a",
+    "storage_bucket": "flutter-learning-5c40a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887724116629:android:853dd68c33f28b9e10a99c",
+        "android_client_info": {
+          "package_name": "com.example.news_article"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887724116629-k2dp90kotnu7jneuoettomsl92pkhk0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApCZ2b_mSt0ZTf4e2T7Jia5YUwtpUqY7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887724116629-k2dp90kotnu7jneuoettomsl92pkhk0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
