@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_article/loginPage.dart';
+import './services/apiServices.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -6,6 +8,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  ApiServices _apiServices = ApiServices();
   final _formKey        = GlobalKey<FormState>();
   final  _userName      = TextEditingController();
   final  _userEmail     = TextEditingController();
@@ -15,6 +18,47 @@ class _SignUpState extends State<SignUp> {
   bool passwordAlert    = false;
   bool accountWrong     = false;
 
+  void _resgisterUser(){
+    setState(() {
+      isLoading = true;
+    });
+
+    _apiServices.registerUser( _userName.text, _userEmail.text, _userPassword.text).then((result) {
+        
+         setState(() {
+            isLoading = false;
+          }); 
+
+        if(result){
+          final snackBar = SnackBar(
+              content: Text('Register Success'),
+              action: SnackBarAction(
+                label: 'Sign in',
+                onPressed: () {
+                  // Some code to undo the change.
+                  Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                },
+              ),
+            );
+        Scaffold.of(context).showSnackBar(snackBar);
+        }else{
+          final snackBar =  SnackBar(
+              content: Text('Register Failed!'),
+              action: SnackBarAction(
+                label: 'Undo',
+                onPressed: () {
+                  // Some code to undo the change.
+                },
+              ),
+            );
+        Scaffold.of(context).showSnackBar(snackBar);
+        }
+
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +133,7 @@ class _SignUpState extends State<SignUp> {
                           }
                         },
                         style: new TextStyle(color: Colors.white),
-                        obscureText: false,
+                        obscureText: true,
                         decoration: InputDecoration(
                           labelText: "Password",
                           labelStyle: new TextStyle(
@@ -114,6 +158,7 @@ class _SignUpState extends State<SignUp> {
                           ),  
                         ),
                     );
+    // ApiServices().getUser().then((value) => print(value));
 
     return Card(
       color:  Colors.black.withOpacity(0.4),
@@ -139,9 +184,11 @@ class _SignUpState extends State<SignUp> {
                       child: RaisedButton(
                         color: Colors.orange[700],
                         onPressed: () {
-                          _formKey.currentState.validate();
+                          if(_formKey.currentState.validate()){
+                            _resgisterUser();
+                          };
                         },
-                        child: Text('Register', style: TextStyle(color: Colors.white),)
+                        child: isLoading ? CircularProgressIndicator() : Text('Register', style: TextStyle(color: Colors.white),)
                       ),
                     ),
 

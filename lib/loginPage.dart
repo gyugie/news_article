@@ -3,6 +3,7 @@ import 'package:news_article/sigin.dart';
 import 'package:news_article/signup.dart';
 
 class LoginPage extends StatefulWidget {
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
