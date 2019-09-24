@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import './article_detail.dart';
 
 class Article extends StatelessWidget {
+  final String event_id;
+  final String event_title;
+  final String event_description;
+  final String image_url;
+  final String created_date;
+
+  Article({
+    this.event_id, 
+    this.event_title, 
+    this.event_description,
+    this.image_url, 
+    this.created_date
+    });
 
   void selectArticle(BuildContext ctx){
     Navigator.of(ctx).pushNamed(ArticleDetail.routeName);
@@ -14,9 +27,9 @@ class Article extends StatelessWidget {
       child: ListTile(
          onTap: () => selectArticle(context),
          contentPadding: EdgeInsets.all(10),
-        leading: Image.network('https://asset.kompas.com/crops/FwQf8MIhaM_-zV-jsJxziFLCSqc=/0x0:900x600/750x500/data/photo/2017/05/17/375992809.jpg'),
+        leading: Image.network(image_url),
         title: Text(
-          'KTM LAUNCHES A NEW GENERATION',
+          event_title,
           style: TextStyle(
               fontSize: 14,
               fontFamily: 'EncodeSansExpanded',
@@ -28,8 +41,7 @@ class Article extends StatelessWidget {
                       text: '',
                       style: DefaultTextStyle.of(context).style,
                       children: <TextSpan>[
-                        TextSpan(text: ' gnarliest terrain and in deepest  \n\n'),
-                        TextSpan(text: 'Sep 12 2019')
+                        TextSpan(text: '\n ${created_date}')
                       ],
                     ),
                   ),

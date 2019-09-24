@@ -1,10 +1,11 @@
-// import '../model/userModel.dart';
+import 'dart:convert';
 import 'package:http/http.dart' show Client;
-import 'package:http/http.dart';
+import '../model/eventModel.dart';
 
 class ApiServices{
   final String baseUrl = "http://10.0.2.2:3000";
   Client client         = Client();
+  final Object headers = {"content-type": "application/x-www-form-urlencoded"};
 
   Future getUser() async {
     final response = await client.get("${baseUrl}/api/user");
@@ -16,16 +17,28 @@ class ApiServices{
   }
 
   Future <bool> registerUser(String username, String email, String password) async {
-    print('${username} ${email} ${password}');
+    final Object payload = {'username': username, 'email': email, 'password': password};
+
     final response = await client.post("${baseUrl}/api/user",
-                            headers: {"content-type": "application/x-www-form-urlencoded"},
-                            body: {'username': username, 'email': email, 'password': password},
+                            headers: headers ,
+                            body: payload,
     );
 
     if(response.statusCode == 200){
       return true;
     } else {
       return false;
+    }
+
+  }
+
+  Future <List<Event>> eventList() async {
+    final response = await client.get("${baseUrl}/event");
+     if(response.statusCode == 200){
+      // var results = json.decode(response.body);
+      return eventFromJson(response.body); 
+    } else {
+      return null;
     }
 
   }
