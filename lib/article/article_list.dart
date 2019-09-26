@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../model/eventModel.dart';
+import '../model/postModel.dart';
 import '../services/apiServices.dart';
 import '../widget/article.dart';
 
@@ -28,8 +28,8 @@ class _ArticleListState extends State<ArticleList> {
               ),
       height: MediaQuery.of(context).size.height * 0.70,
       child: FutureBuilder(
-        future: apiService.eventList(),
-        builder: (BuildContext context, AsyncSnapshot<List<Event>> snapshot){
+        future: apiService.postList(),
+        builder: (BuildContext context, AsyncSnapshot<List<Post>> snapshot){
           if(snapshot.hasError){
            return Align(
               alignment: Alignment.topCenter,
@@ -38,8 +38,8 @@ class _ArticleListState extends State<ArticleList> {
               ),
             );
           } else if(snapshot.connectionState == ConnectionState.done){
-            List<Event> event = snapshot.data;
-            return _buildListView(event);
+            List<Post> post = snapshot.data;
+            return _buildListView(post);
           } else {
              return Align(
               alignment: Alignment.topCenter,
@@ -55,53 +55,22 @@ class _ArticleListState extends State<ArticleList> {
     );
   }
 
-  _buildListView(List<Event> events){
+  _buildListView(List<Post> posts){
     return Container(
         child : ListView.builder(
           itemBuilder: (ctx, index){
-            Event event = events[index];
-            print(event.image_url);
+            Post post = posts[index];
+            print(post.image_url);
             return Article(
-              event_id: event.event_id.toString(),
-              event_title: event.event_title,
-              event_description: event.event_description,
-              image_url: event.image_url,
-              created_date: event.created_date,
+              post_id: post.post_id.toString(),
+              post_title: post.post_title,
+              post_description: post.post_description,
+              image_url: post.image_url,
+              created_date: post.created_date,
             );
           },
-          itemCount: events.length,
+          itemCount: posts.length,
         )
       );
   }
 }
-
-//  padding: EdgeInsets.symmetric(
-      //           horizontal: 10.0,
-      //           vertical: 10.0
-      //         ),
-      // height: MediaQuery.of(context).size.height * 0.70,
-      // child: 
-      // results == false 
-      // ? 
-      // Align(
-      //   alignment: Alignment.topCenter,
-      //   child: Container(
-      //     width: 40,
-      //     height: 40,
-      //     child: new CircularProgressIndicator(),
-      //   ),
-      // ) 
-      // : 
-      // // Container()
-      // ListView.builder(
-      //   itemBuilder: (ctx, index){
-      //     return Article(
-      //       event_id: '1',
-      //       event_title: 'test',
-      //       event_description: 'test',
-      //       event_image: 'test',
-      //       event_date: 'rte',
-      //     );
-      //   },
-      //   itemCount: 10,
-      // ) 

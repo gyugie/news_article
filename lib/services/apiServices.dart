@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' show Client;
-import '../model/eventModel.dart';
+import '../model/postModel.dart';
 
 class ApiServices{
   final String baseUrl = "http://10.0.2.2:3000";
@@ -32,11 +32,11 @@ class ApiServices{
 
   }
 
-  Future <List<Event>> eventList() async {
-    final response = await client.get("${baseUrl}/event");
+  Future <List<Post>> postList() async {
+    final response = await client.get("${baseUrl}/post");
      if(response.statusCode == 200){
       // var results = json.decode(response.body);
-      return eventFromJson(response.body); 
+      return postFromJson(response.body); 
     } else {
       return null;
     }
