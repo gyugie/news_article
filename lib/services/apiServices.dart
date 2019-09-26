@@ -32,15 +32,4 @@ class ApiServices{
 
   }
 
-  Future <List<Post>> postList() async {
-    final response = await client.get("${baseUrl}/post");
-     if(response.statusCode == 200){
-      // var results = json.decode(response.body);
-      return postFromJson(response.body); 
-    } else {
-      return null;
-    }
-
-  }
-
 }

@@ -37,14 +37,23 @@ class MainDrawer extends StatelessWidget {
             child: Image.network('https://i.pinimg.com/originals/a7/e0/de/a7e0deffdb03fb4f24f242e4e5735a65.jpg'),
           ),
           SizedBox(height: 10),
+          Divider(color:Colors.white,height: 2),
           buildListTile(
-            'Register For Events',
-            Icons.web_asset ,
+            'Favorites',
+            Icons.star,
             () {
-               Navigator.of(context).pushNamed(ArticleDetail.routeName);
+              Navigator.of(context).pushNamed('/');
             }
           ),
-          Divider(color:Colors.white,height: 4),
+          Divider(color:Colors.white,height: 2),
+          buildListTile(
+            'Bookmarks',
+            Icons.bookmark,
+            () {
+              Navigator.of(context).pushNamed('/');
+            }
+          ),
+          Divider(color:Colors.white,height: 2),
           buildListTile(
             'Logout',
             Icons.transit_enterexit,
@@ -52,7 +61,8 @@ class MainDrawer extends StatelessWidget {
               Navigator.of(context).pushNamed('/');
             }
           ),
-          Divider(color:Colors.white,height: 4),
+          Divider(color:Colors.white,height: 2),
+          
         ],
       ),
       ),

@@ -91,9 +91,7 @@ class _ArticleDetailState extends State<ArticleDetail> {
                   Container(
                     child: Row(
                       children: <Widget>[
-                         _myButtonAction(Icon(Icons.star, color: Colors.white), 'btn1'),
-                        SizedBox(width: 10),
-                        _myButtonAction(Icon(Icons.bookmark, color: Colors.white), 'btn2'),
+                         _myButtonAction(Icon(Icons.star_border, color: Colors.white), 'btn1'),
                       ],
                     )
                   ),

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import '../model/postModel.dart';
-import '../services/apiServices.dart';
+import '../services/postService.dart';
 import '../widget/article.dart';
 
 class ArticleList extends StatefulWidget {
@@ -10,12 +10,12 @@ class ArticleList extends StatefulWidget {
 }
 
 class _ArticleListState extends State<ArticleList> {
-  ApiServices apiService;
+  PostService postService;
 
   @override
   void initState(){
     super.initState();
-    apiService = ApiServices();
+    postService = PostService();
   }
 
   @override
@@ -28,7 +28,7 @@ class _ArticleListState extends State<ArticleList> {
               ),
       height: MediaQuery.of(context).size.height * 0.70,
       child: FutureBuilder(
-        future: apiService.postList(),
+        future: postService.postList(),
         builder: (BuildContext context, AsyncSnapshot<List<Post>> snapshot){
           if(snapshot.hasError){
            return Align(
