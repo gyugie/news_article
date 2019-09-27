@@ -60,12 +60,12 @@ class _ArticleListState extends State<ArticleList> {
         child : ListView.builder(
           itemBuilder: (ctx, index){
             Post post = posts[index];
-            print(post.image_url);
             return Article(
               post_id: post.post_id.toString(),
               post_title: post.post_title,
               post_description: post.post_description,
               image_url: post.image_url,
+              is_favorite: post.is_favorite,
               created_date: post.created_date,
             );
           },
